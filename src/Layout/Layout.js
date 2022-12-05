@@ -1,9 +1,9 @@
 import { Box } from './Layout.styled';
 
-export default function Layout() {
+export default function Layout({ children }) {
   return (
     <Box>
-      <div>Home</div>
+      <div>{children}</div>
     </Box>
   );
 }
