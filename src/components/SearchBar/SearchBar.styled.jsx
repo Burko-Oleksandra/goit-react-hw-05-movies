@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 export const Form = styled.form`
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 20px;
+  right: 30px;
 `;
 
 export const Button = styled.button`

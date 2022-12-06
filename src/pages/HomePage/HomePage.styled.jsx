@@ -6,7 +6,7 @@ export const Title = styled.h1`
   text-align: center;
   text-decoration: underline dotted;
   margin: 0;
-  margin-top: 15px;
+  margin-top: 35px;
 `;
 
 export const Wrapper = styled.div`

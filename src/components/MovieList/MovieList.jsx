@@ -1,6 +1,7 @@
 import React from 'react';
-import { List } from './MovieList.styled';
+import PropTypes from 'prop-types';
 
+import { List } from './MovieList.styled';
 import MovieListItem from 'components/MovieListItem/MovieListItem';
 
 function MovieList({ movies }) {
@@ -15,3 +16,7 @@ function MovieList({ movies }) {
 }
 
 export default MovieList;
+
+MovieList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};

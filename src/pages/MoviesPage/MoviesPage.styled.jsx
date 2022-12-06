@@ -6,6 +6,6 @@ export const TitleSearch = styled.h3`
   text-align: center;
   text-decoration: underline dotted;
   margin: 0;
-  margin-top: 15px;
+  margin-top: 35px;
   margin-bottom: 40px;
 `;

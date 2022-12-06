@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import SearchBar from 'components/SearchBar/SearchBar';
 import MovieList from '../../components/MovieList/MovieList';
-// import NotificationWarning from 'components/NotificationWarning';
+import NotificationWarning from 'components/NotificationWarning';
 import { getSearchedMovies } from '../../services/api';
 import { TitleSearch } from './MoviesPage.styled';
 
 function MoviesPage() {
-  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filterParams = searchParams.get('filter') ?? '';
 
   useEffect(() => {
     const getMovies = async () => {
-      const { results } = await getSearchedMovies(searchQuery);
+      const { results } = await getSearchedMovies(filterParams);
       setMovies(results);
+      if (!results.length) NotificationWarning();
     };
-    if (searchQuery) getMovies();
-    // if (!movies) NotificationWarning();
-  }, [searchQuery]);
+    if (filterParams) getMovies();
+  }, [filterParams]);
 
-  function handleFormSubmit(searchQuery) {
-    setSearchQuery(searchQuery);
+  function changeFilter(value) {
+    setSearchParams(value !== '' ? { filter: value } : {});
   }
 
   return (
     <>
-      <SearchBar onSubmit={handleFormSubmit} />
+      <SearchBar onChange={changeFilter} />
+      {!filterParams && (
+        <TitleSearch>
+          Please enter the name of the movie in the searchbar
+        </TitleSearch>
+      )}
       {!!movies.length && (
         <>
           <TitleSearch>Your search results</TitleSearch>

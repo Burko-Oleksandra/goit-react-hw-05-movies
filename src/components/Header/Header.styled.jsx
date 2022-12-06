@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const HeaderWrap = styled.header`
   display: flex;
@@ -32,4 +33,13 @@ export const Pages = styled.p`
   font-size: 36px;
   color: #483d8b;
   margin: 0;
+  text-decoration: none;
+`;
+
+export const Text = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #483d8b;
 `;

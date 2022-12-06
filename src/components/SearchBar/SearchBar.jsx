@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 
 import NotificationWarning from 'components/NotificationWarning';
 import { Form, Button, Icon, Input } from './SearchBar.styled';
 
-export default function SearchBar({ onSubmit }) {
+export default function SearchBar({ onChange }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   function handleNameChange(event) {
+    onChange(event.currentTarget.value);
     setSearchQuery(event.currentTarget.value.toLowerCase());
   }
 
@@ -18,7 +20,6 @@ export default function SearchBar({ onSubmit }) {
       return NotificationWarning();
     }
 
-    onSubmit(searchQuery);
     setSearchQuery('');
   }
 
@@ -40,3 +41,7 @@ export default function SearchBar({ onSubmit }) {
     </Form>
   );
 }
+
+SearchBar.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
