@@ -26,6 +26,7 @@ function ReviewesPage() {
     const getReviews = async () => {
       const results = await getMovieReviews(movieId);
       setRewiewResult(results.results);
+      console.log(results);
     };
     getReviews();
   }, [movieId]);
